@@ -1,0 +1,6 @@
+*.npz
+*.jsonl
+*.jsonl.gz
+__pycache__/
+.vscode/
+
