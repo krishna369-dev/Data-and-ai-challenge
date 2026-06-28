@@ -15,11 +15,8 @@ class Stage1Retriever:
         2. Fast heuristic filter (required skills + exp) -> final_k
         Returns list of (candidate_id, semantic_score, retrieval_score)
         """
-        # We need a query string for semantic search. We'll use the job description text roughly.
-        query_text = "Senior AI Engineer. " + " ".join(self.jd_features["required_skills"])
-        
-        # 1. Semantic Search
-        semantic_results = self.embedding_index.query(query_text, top_k=top_k_semantic)
+        # 1. Semantic Search using pre-computed JD embedding (fully offline)
+        semantic_results = self.embedding_index.query(top_k=top_k_semantic)
         
         # 2. Heuristic Filter
         scored_candidates = []
