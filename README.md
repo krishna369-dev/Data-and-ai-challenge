@@ -31,18 +31,24 @@ Ranks 100,000 candidates against a Senior AI Engineer JD using semantic embeddin
 pip install -r requirements.txt
 ```
 
-### Step 2 — Download pre-computed embeddings
+## Step 2 — Download pre-computed embeddings (one-time setup)
 
 ```bash
 python precompute.py --download --out ./embeddings.npz
 ```
 
-Downloads the following pre-computed artifacts from Hugging Face:
+This downloads the required pre-computed artifacts:
 
-- `embeddings.npz` (candidate embeddings)
-- `embeddings_jd.npy` (job description embedding)
+- `embeddings.npz` — candidate embeddings
+- `embeddings_jd.npy` — job description embedding
 
-This is a one-time setup step. After the download completes, the ranking pipeline runs completely offline with no network access.
+This is a **one-time setup step**. Once these files are present locally, the ranking pipeline runs completely offline and makes **no external API calls or network requests**.
+
+Alternatively, compute the embeddings locally (takes approximately 35–40 minutes on CPU):
+
+```bash
+python precompute.py --candidates ./candidates.jsonl --out ./embeddings.npz
+```
 
 ### Step 3 — Run the ranker (the submission step)
 ```bash
