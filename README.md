@@ -42,7 +42,7 @@ This downloads the required pre-computed artifacts:
 - `embeddings.npz` — candidate embeddings
 - `embeddings_jd.npy` — job description embedding
 
-This is a **one-time setup step**. Once these files are present locally, the ranking pipeline runs completely offline and makes **no external API calls or network requests**.
+This is a one-time setup step. Once these files are present locally, the ranking pipeline runs completely offline and makes no external API calls or network requests.
 
 Alternatively, compute the embeddings locally (takes approximately 35–40 minutes on CPU):
 
