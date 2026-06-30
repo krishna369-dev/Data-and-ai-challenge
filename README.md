@@ -32,16 +32,17 @@ pip install -r requirements.txt
 ```
 
 ### Step 2 — Download pre-computed embeddings
+
 ```bash
 python precompute.py --download --out ./embeddings.npz
 ```
-> This downloads the pre-computed `embeddings.npz` (~150MB) from HuggingFace in ~30 seconds.
-> No network access needed after this step.
 
-Alternatively, compute from scratch (takes ~38 minutes, no GPU needed):
-```bash
-python precompute.py --candidates ./candidates.jsonl --out ./embeddings.npz
-```
+Downloads the following pre-computed artifacts from Hugging Face:
+
+- `embeddings.npz` (candidate embeddings)
+- `embeddings_jd.npy` (job description embedding)
+
+This is a one-time setup step. After the download completes, the ranking pipeline runs completely offline with no network access.
 
 ### Step 3 — Run the ranker (the submission step)
 ```bash
